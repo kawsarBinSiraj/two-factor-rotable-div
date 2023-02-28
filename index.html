@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <section id="section">
+            <div id="body">
+                <div id="drop"></div>
+                <div id="circle">
+                    <div id="cirlce-left"></div>
+                    <div id="cirlce-right"></div>
+                    <img
+                        id="img"
+                        src="https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+                        alt="img"
+                    />
+                </div>
+            </div>
+        </section>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            #section {
+                height: 100vh;
+                position: relative;
+                overflow: hidden;
+            }
+
+            #body {
+                height: 100vh;
+                display: grid;
+                place-items: center;
+                --size: 600px;
+                --circle-color: red;
+                --rotate: 35deg;
+            }
+
+            #drop {
+                width: var(--size);
+                height: var(--size);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                border-radius: 100%;
+                transform: translate(-50%, -50%) rotate(var(--rotate));
+                z-index: 100;
+            }
+
+            #drop::after {
+                content: "";
+                display: block;
+                width: 800%;
+                height: 800%;
+                position: absolute;
+                top: -400%;
+                right: 50%;
+                z-index: -10;
+                background-color: rgb(47, 100, 7);
+            }
+
+            #circle {
+                width: var(--size);
+                height: var(--size);
+                display: flex;
+                border-radius: 100%;
+                overflow: hidden;
+                z-index: 100;
+                transform: rotate(var(--rotate));
+            }
+
+            #cirlce-left {
+                background-color: blue;
+                width: calc(var(--size) / 2);
+                height: var(--size);
+            }
+
+            #cirlce-right {
+                background-color: var(--circle-color);
+                width: calc(var(--size) / 2);
+                height: var(--size);
+                position: relative;
+            }
+
+            #img {
+                width: calc(var(--size) - 40px);
+                height: calc(var(--size) - 40px);
+                border-radius: 100%;
+                object-fit: cover;
+                object-position: center;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(calc(var(--rotate) * -1));
+                z-index: 300;
+            }
+        </style>
+    </body>
+</html>
